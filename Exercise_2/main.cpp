@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    //i need s in other functions so i define it here in order to refere to it in Import
+    //I need s in other functions, so i define s here in order to use reference (&) in Import
     double s=0.0;
     string fileread= "data.csv";
     size_t n = 0;
@@ -24,7 +24,6 @@ int main()
     if (Import_vectors(fileread, n,w,r,s)){
         cout<<"import successful!"<<endl;
     }else {
-        cout<<"something wrong..."<<endl;
         return 1;
     }
 
@@ -35,21 +34,23 @@ int main()
     filewrite<<setprecision(0)<<"n = "<<n<<endl;
 
 
-    //recall function to print correctly values of vectors on file result.txt
+    //recall function ArrayToString to print correct values of vectors on file result.txt
     //w
     cout<<"w =  "<<ArrayToString(n,w)<<endl;
     filewrite<<"w =  ";
     filewrite<<ArrayToString(n,w)<<endl;
     //r
-    cout<<"r =  "<<endl;
+    cout<<"r =  "<<ArrayToString(n,r)<<endl;
     filewrite<<"r =  ";
     filewrite<<ArrayToString(n,r)<<endl;
 
 
-    //i deduce the rate of return from the final value of portfolio
-    //so let's first calculate the final portfolio
+    //I deduce the rate of return from the final value of portfolio
+    //so I calculate the final portfolio first
+
     double v=Calculte_valueportfolio(n,s,w,r);
     cout << "Final portfolio value V: "<<setprecision(2)<<v<<endl;
+
     //than deduce the final ratio using : r=(V/S)-1
     double final_rate=Calculte_rateofreturn(s,v);
     cout << "total rate of return: "<<setprecision(4)<<final_rate<<endl;
