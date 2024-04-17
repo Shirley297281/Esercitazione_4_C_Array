@@ -66,12 +66,12 @@ bool Import_vectors(const string& fileread,
         istringstream convertw(valuew);
         convertw>>fract_value;
         w[i]=fract_value;
-        convertw.clear();
+        //convertw.clear(); inutile
 
         istringstream convertr(valuer);
         convertr>>rate_value;
         r[i]=rate_value;
-        convertr.clear();
+        //convertr.clear(); inutile
     }
 
 
@@ -100,7 +100,7 @@ double Calculte_valueportfolio(const size_t& n,
                              const double* const& w,
                              const double* const& r){
     double v=0.0;
-    cout<<"s: "<<s<<endl;
+
     for ( size_t i = 0; i<n; ++i) {
         v += w[i]*s*(r[i]+1);
     }
